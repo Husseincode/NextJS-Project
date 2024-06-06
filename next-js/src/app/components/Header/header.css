@@ -1,0 +1,8 @@
+.lnk:link{
+    color: black;
+    text-decoration: none;
+}
+.lnk:hover{
+    color: grey;
+    margin-bottom: 2px solid black;
+}
