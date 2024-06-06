@@ -15,13 +15,13 @@ const header_styling = {
 
 export default function Header(){
     return (
-        <header className='shadow-sm' style={header_styling}>
+        <header className='shadow-sm text-white' style={header_styling}>
             <h3>Kings Reward</h3>
             <div className='d-flex text-dark gap-3 p-2'>
-                <Link className='lnk text-dark' href={''}>Home</Link>
-                <Link className='lnk text-dark' href={''}>About </Link>
-                <Link className='lnk text-dark' href={''}>Ride </Link>
-                <Link className='lnk text-dark' href={''}>Dashboard </Link>
+                <Link className='lnk text-white' href={''}>Home</Link>
+                <Link className='lnk text-white' href={''}>About </Link>
+                <Link className='lnk text-white' href={''}>Ride </Link>
+                <Link className='lnk text-white' href={''}>Dashboard </Link>
                 <UserButton/>
             </div>
             <div style={{position: 'absolute', top: '80px', right: '0px'}}>

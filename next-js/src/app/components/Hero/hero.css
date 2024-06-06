@@ -1,4 +1,12 @@
 .img{
-    background-image: url('/NextJS-Project/next-js/src/Assets/kingReward.png');
+    background: linear-gradient(120deg, dodgerblue, midnightblue);
     height: 82vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+}
+.img > h2{
+    width: 400px;
+    text-align: center;
 }
