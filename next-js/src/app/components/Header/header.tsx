@@ -10,13 +10,13 @@ const header_styling = {
     // border: '1px solid lightgrey',
     display: 'flex',
     justifyContent: 'space-between',
-    padding: '15px 20px'
+    padding: '10px 20px'
 }
 
 export default function Header(){
     return (
         <header className='shadow-sm text-white' style={header_styling}>
-            <h3>Kings Reward</h3>
+            <h3><img width={'50x'} height={'50px'} src='/k.png' alt='k'/>ings Rewards</h3>
             <div className='d-flex text-dark gap-3 p-2'>
                 <Link className='lnk text-white' href={''}>Home</Link>
                 <Link className='lnk text-white' href={''}>About </Link>
@@ -24,7 +24,7 @@ export default function Header(){
                 <Link className='lnk text-white' href={''}>Dashboard </Link>
                 <UserButton/>
             </div>
-            <div style={{position: 'absolute', top: '80px', right: '0px'}}>
+            <div style={{position: 'absolute', top: '70px', right: '0px'}}>
                 <SignIn/>
             </div>
         </header>
