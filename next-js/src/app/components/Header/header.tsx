@@ -20,7 +20,7 @@ export default function Header(){
     return (
         <header className='shadow-sm text-white' style={header_styling}>
             <h3 className='mt-1'>Kings Rewards</h3>
-            <div className='d-flex links text-dark gap-4 p-2'>
+            <div id='links' className='d-flex links text-dark gap-4 p-2'>
                 <Link className='lnk text-white' href={''}>Home <FontAwesomeIcon icon={faHome}/></Link>
                 <Link className='lnk text-white' href={''}>About <FontAwesomeIcon icon={faInfoCircle}/></Link>
                 <Link className='lnk text-white' href={''}>Ride <FontAwesomeIcon icon={faTaxi}/></Link>
