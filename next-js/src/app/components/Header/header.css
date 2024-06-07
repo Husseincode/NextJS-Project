@@ -4,5 +4,11 @@
 }
 .lnk:hover{
     color: grey;
-    margin-bottom: 2px solid lightgrey;
+    border-bottom: 2px solid lightgrey;
+}
+
+@media screen and (max-width: 767px){
+    .links{
+        display: none;
+    }
 }
