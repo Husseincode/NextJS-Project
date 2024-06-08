@@ -18,16 +18,16 @@ const header_styling = {
 
 export default function Header(){
     return (
-        <header className='shadow-sm text-white' style={header_styling}>
+        <header className='shadow-sm' style={header_styling}>
             <h3 className='mt-1'>Kings Rewards</h3>
             <div id='links' className='d-flex links text-dark gap-4 p-2'>
-                <Link className='lnk text-white' href={''}>Home <FontAwesomeIcon icon={faHome}/></Link>
-                <Link className='lnk text-white' href={''}>About <FontAwesomeIcon icon={faInfoCircle}/></Link>
-                <Link className='lnk text-white' href={''}>Ride <FontAwesomeIcon icon={faTaxi}/></Link>
-                <Link className='lnk text-white' href={''}>Dashboard <FontAwesomeIcon icon={faDashboard}/></Link>
+                <Link className='lnk' href={'/'}>Home <FontAwesomeIcon icon={faHome}/></Link>
+                <Link className='lnk' href={''}>About <FontAwesomeIcon icon={faInfoCircle}/></Link>
+                <Link className='lnk' href={'#Ride'}>Ride <FontAwesomeIcon icon={faTaxi}/></Link>
+                {/* <Link className='lnk' href={''}>SignUp <FontAwesomeIcon icon={faDashboard}/></Link> */}
                 <UserButton/>
             </div>
-            <div style={{position: 'absolute', top: '70px', right: '0px'}}>
+            <div style={{position: 'absolute', top: '80px', right: '10px', zIndex: '1'}}>
                 <SignIn/>
             </div>
         </header>

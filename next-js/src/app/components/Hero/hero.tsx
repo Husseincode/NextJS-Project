@@ -8,7 +8,7 @@ let span_style = {
 
 export default function Hero(){
     return (
-        <div className="img text-white">
+        <div style={{padding: '0px 20px'}} className="img text-white">
             <h2>Every Journey is a Rewarding <span style={span_style} className='text-dark'>Adventure!</span></h2>
             {/* <Image className='image' src={'/kingReward.png'} alt='logo' layout='fill'/> */}
         </div>

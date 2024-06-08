@@ -1,9 +1,16 @@
-import React from 'react'
+/* eslint-disable @next/next/no-sync-scripts */
+import Head from 'next/head';
+import React from 'react';
+import dynamic from 'next/dynamic';
+import { NextPage } from 'next';
+import './map-section.css'
 
-function Map() {
+
+const Map: NextPage = () => {
   return (
-    <div>
-      Map section
+    <div className='shadow-sm mapContainer' style={{ height: '670px'}}>
+      <p>Map Section</p>
+      {/* Map section */}
     </div>
   )
 }
