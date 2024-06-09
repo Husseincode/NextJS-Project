@@ -14,7 +14,7 @@ function Item({name, description, price}: ItemProps) {
   return (
     <section className='section'>
       <Image src={'/car-white.svg'} alt='car logo' width={100} height={100}/>
-      <div style={{display: 'flex', flexDirection:'column'}}>
+      <div style={{display: 'flex', flexDirection: 'column'}}>
         <h5>{name}</h5>
         <p>{description}</p>
       </div>

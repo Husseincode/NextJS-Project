@@ -1,18 +1,10 @@
-/* display: 'flex',
-    justifyContent: 'space-between',
-    border: '1px solid grey',
-    alignItems: 'center',
-    padding:'5px',
-    height: '90px',
-    cursor: 'pointer', */
-
 .section{
     display: flex;
+    /* width: 500px; */
     justify-content: space-between;
     border: 1px solid grey;
     align-items: center;
     padding: 5px;
     height: 90px;
     cursor: pointer;
-    flex:auto;
 }
