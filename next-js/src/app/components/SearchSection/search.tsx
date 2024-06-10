@@ -18,13 +18,15 @@ let form_style = {
     // border: '1px solid lightgrey'
 }
 
+
 // type Props = {
 //   DropdownIndicator: boolean
 // }
 
 const Search = () => {
   const [value, setValue] = useState<any>(null);
-  const [secondValue, setSecondValue] = useState<any>(null);
+  const [secondvalue, setSecondValue] = useState<any>(null);
+ 
   const {source, setSource} = useContext<any>(SourceContext);
   const {destination, setDestination} = useContext<any>(DestinationContext);
 
@@ -77,13 +79,13 @@ const Search = () => {
           selectProps={{
             value,
             onChange: (place:any, type:any)=>{
-              getLatandLng(place, type);
+              // getLatandLng(place, type);
               setValue(place)
             },
             placeholder: 'Pickup Location',
             isClearable: true,
             components: {
-              DropdownIndicator: false
+              DropdownIndicator: () => false
             },
             styles: {
               control: (provided) => ({
@@ -101,15 +103,15 @@ const Search = () => {
           {/* <input placeholder='Dropoff Location' style={{backgroundColor: 'azure', paddingLeft: '30px'}} className='form-control' type='text'/> */}
           <GooglePlacesAutocomplete
           selectProps={{
-            secondValue,
+            secondvalue,
             onChange: (place:any, type:any)=>{
-              getLatandLng(place, type);
+              // getLatandLng(place, type);
               setSecondValue(place)
             },
             placeholder: 'Dropoff Location',
             isClearable: true,
             components: {
-              DropdownIndicator: false
+              DropdownIndicator: () => {return true}
             },
             styles: {
               control: (provided) => ({

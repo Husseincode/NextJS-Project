@@ -8,6 +8,7 @@ import Map from "./components/MapSection/map";
 import Search from "./components/SearchSection/search";
 import './pageStyle.css'
 import { LoadScript } from "@react-google-maps/api";
+import { Footer } from "./components/footer/footer";
 
 export default function Homepage(){
     const [source, setSource] = useState<any>([]);
@@ -25,6 +26,7 @@ export default function Homepage(){
             <Map/>
         </div>
     </section>
+    <Footer/>
     </DestinationContext.Provider>
     </SourceContext.Provider>
     </>
