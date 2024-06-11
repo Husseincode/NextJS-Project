@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { SourceContext } from '../../../../context/SourceContext';
 import { DestinationContext } from '../../../../context/DestinationContext';
+import { Marker } from 'react-leaflet';
 
 const containerStyle = {
   // width: '400px',
@@ -11,10 +12,10 @@ const containerStyle = {
 };
 
 const Map = () => {
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
-  });
+  // const { isLoaded } = useJsApiLoader({
+  //   id: 'google-map-script',
+  //   googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
+  // });
 
   const [ center, setCenter ] = useState<any>({
     lat: -3.745,
@@ -38,6 +39,7 @@ const Map = () => {
   }, []);
 
   useEffect(()=>{
+    console.log(map)
     if(source?.length !== [] && map){
       setCenter({
         lat: source.lat,
@@ -45,9 +47,9 @@ const Map = () => {
       })
       console.warn(center)
     }
-  },[map, source])
+  },[source, destination])
 
-  return isLoaded ? (
+  return (
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -56,10 +58,10 @@ const Map = () => {
         onUnmount={onUnmount}
         options={{mapId: 'e7eb2ff1f40a437a'}}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
+       {source.length!=[]? <Marker position={{lat:source.lat, lng:source.lng}}/>:null}
         <></>
       </GoogleMap>
-  ) : <></>
+  )
 }
 
 export default Map;

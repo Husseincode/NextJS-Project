@@ -26,7 +26,6 @@ let form_style = {
 const Search = () => {
   const [value, setValue] = useState<any>(null);
   const [secondvalue, setSecondValue] = useState<any>(null);
- 
   const {source, setSource} = useContext<any>(SourceContext);
   const {destination, setDestination} = useContext<any>(DestinationContext);
 
@@ -79,7 +78,7 @@ const Search = () => {
           selectProps={{
             value,
             onChange: (place:any, type:any)=>{
-              // getLatandLng(place, type);
+              getLatandLng(place, type);
               setValue(place)
             },
             placeholder: 'Pickup Location',
@@ -95,7 +94,6 @@ const Search = () => {
               }),
             }
           }}
-          apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
           />
         </span>
         <span>
@@ -105,7 +103,7 @@ const Search = () => {
           selectProps={{
             secondvalue,
             onChange: (place:any, type:any)=>{
-              // getLatandLng(place, type);
+              getLatandLng(place, type);
               setSecondValue(place)
             },
             placeholder: 'Dropoff Location',
@@ -121,7 +119,6 @@ const Search = () => {
               }),
             }
           }}
-          apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
           />
         </span>
         <button onClick={handleSearch} className='btn btn-primary text-center'>Search</button>
