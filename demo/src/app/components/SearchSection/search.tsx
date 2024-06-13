@@ -29,13 +29,6 @@ const Search = () => {
   const {source, setSource} = useContext<any>(SourceContext);
   const {destination, setDestination} = useContext<any>(DestinationContext);
 
-  const handleSearch = (e: any) => {
-    e.preventDefault();
-    if(source){
-      console.log(source)
-    }
-  }
-
   const getLatandLng = (place:any, type:any) => {
     const placeId = place.value.place_id;
     const service = new google.maps.places.PlacesService(document.createElement('div'));
@@ -62,6 +55,15 @@ const Search = () => {
     })
   };
 
+  const handleSearch = (e: any) => {
+    e.preventDefault();
+    console.warn(`value ${value}\nsecond value: ${secondvalue}`)
+    if(source){
+      console.log(source)
+    }
+  }
+
+
   useEffect(()=>{
     if(source){
       console.log(source)
@@ -69,11 +71,10 @@ const Search = () => {
   }, [source, destination])
   return (
     <>
-    <form onSubmit={handleSearch} style={form_style} className='form-control shadow-sm'>
+    <form onSubmit={(e)=>{e.preventDefault()}} style={form_style} className='form-control shadow-sm'>
         <h4 className='text-white'>Get a ride</h4>
         <span>
           <Image style={{position: 'absolute', zIndex: '1', margin: '7px 0px 0px 5px'}} width={22} height={22} alt='location' src={'/location-sign.svg'}/>
-          {/* <input placeholder='Pickup Location' style={{backgroundColor: 'azure', paddingLeft: '30px'}} className='form-control' type='text'/> */}
           <GooglePlacesAutocomplete
           selectProps={{
             value,
@@ -98,7 +99,6 @@ const Search = () => {
         </span>
         <span>
           <Image style={{position: 'absolute', zIndex: '1', margin: '7px 0px 0px 5px'}} width={22} height={22} alt='location' src={'/location-sign.svg'}/>
-          {/* <input placeholder='Dropoff Location' style={{backgroundColor: 'azure', paddingLeft: '30px'}} className='form-control' type='text'/> */}
           <GooglePlacesAutocomplete
           selectProps={{
             secondvalue,
@@ -109,7 +109,7 @@ const Search = () => {
             placeholder: 'Dropoff Location',
             isClearable: true,
             components: {
-              DropdownIndicator: () => {return true}
+              DropdownIndicator: () => false
             },
             styles: {
               control: (provided) => ({

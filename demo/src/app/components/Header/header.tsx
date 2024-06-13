@@ -23,7 +23,7 @@ export default function Header(){
             <div id='links' className='d-flex links text-dark gap-4 p-2'>
                 <Link className='lnk' href={'/'}>Home <FontAwesomeIcon icon={faHome}/></Link>
                 <Link className='lnk' href={''}>About <FontAwesomeIcon icon={faInfoCircle}/></Link>
-                <Link className='lnk' href={'#Ride'}>Ride <FontAwesomeIcon icon={faTaxi}/></Link>
+                <Link className='lnk text-secondary' href={'#Ride'}>Ride <FontAwesomeIcon icon={faTaxi}/></Link>
                 {/* <Link className='lnk' href={''}>SignUp <FontAwesomeIcon icon={faDashboard}/></Link> */}
                 <UserButton/>
             </div>

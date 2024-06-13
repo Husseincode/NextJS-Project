@@ -12,12 +12,8 @@ const containerStyle = {
 };
 
 const Map = () => {
-  // const { isLoaded } = useJsApiLoader({
-  //   id: 'google-map-script',
-  //   googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
-  // });
-
-  const [ center, setCenter ] = useState<any>({
+  const [error, setError] = useState<string | null>(null);
+  const [ center, setCenter ] = useState<any | number>({
     lat: -3.745,
     lng: -38.523
   });
@@ -39,7 +35,23 @@ const Map = () => {
   }, []);
 
   useEffect(()=>{
-    console.log(map)
+    console.log(map);
+    if(!navigator.geolocation){
+      setError('Your browser does not support Geolocation');
+    }
+
+    const success = (position: GeolocationPosition) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      setCenter({ lat: latitude, lng: longitude});
+      console.log(latitude, longitude)
+    }
+
+    const error = () => {
+      setError('Unable to retrieve your location');
+    };
+    navigator.geolocation.getCurrentPosition(success, error);
+    
     if(source?.length !== [] && map){
       setCenter({
         lat: source.lat,
@@ -47,7 +59,7 @@ const Map = () => {
       })
       console.warn(center)
     }
-  },[source, destination])
+  },[source, destination, center])
 
   return (
       <GoogleMap
