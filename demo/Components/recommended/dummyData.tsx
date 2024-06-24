@@ -3,7 +3,7 @@ export const data = [
         id: 1,
         name: 'UberX',
         descriptio: 'Affordable every price',
-        price: 4.0
+        price: 4.0,
     },
     {
         id: 2,
