@@ -16,7 +16,7 @@ export default function Homepage(){
     return <>
     <SourceContext.Provider value={{source, setSource}}>
     <DestinationContext.Provider value={{destination, setDestination}}>
-        <LoadScript libraries={['places']} googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}>
+        <LoadScript libraries={['places']} googleMapsApiKey={'AIzaSyBpv5y0SbiP8_8_yFLqbFygeotsg-kmfbI'}>
             <Header/>
             <Hero/>
             <section className="main_section">
