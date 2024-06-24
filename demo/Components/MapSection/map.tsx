@@ -52,7 +52,7 @@ const Map = () => {
     };
     navigator.geolocation.getCurrentPosition(success, error);
     
-    if(source?.length !== [] && map){
+    if(source?.length !== Array() && map){
       setCenter({
         lat: source.lat,
         lng: source.lng
@@ -70,7 +70,7 @@ const Map = () => {
         onUnmount={onUnmount}
         options={{mapId: 'e7eb2ff1f40a437a'}}
       >
-       {source.length!=[]? <Marker position={{lat:source.lat, lng:source.lng}}/>:null}
+       {source.length!=Array()? <Marker position={{lat:source.lat, lng:source.lng}}/>:null}
         <></>
       </GoogleMap>
   )
