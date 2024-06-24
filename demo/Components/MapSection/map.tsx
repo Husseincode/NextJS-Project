@@ -104,6 +104,10 @@ const Map = () => {
         <DirectionsRenderer
         directions={directionRoutesPoints}
         options={{
+          polylineOptions:{
+            strokeColor: 'black',
+            strokeWeight: 10
+          }
 
         }}
         />
