@@ -32,27 +32,25 @@ const Search = () => {
     e.preventDefault();
     // console.warn(`value ${value}\nsecond value: ${secondvalue}`)
     if(source){
-      console.log(source)
+      console.log(source, destination)
     }
   }
 
-
   useEffect(()=>{
-    if(source){
-      console.log(source)
-    }
-  }, [source, destination])
+    console.log(source)
+  },[source,destination])
+
   return (
     <>
     <form onSubmit={(e)=>{e.preventDefault()}} style={form_style} className='form-control shadow-sm'>
         <h4 className='text-white'>Get a ride</h4>
         <span>
           <Image style={{position: 'absolute', zIndex: '1', margin: '7px 0px 0px 5px'}} width={22} height={22} alt='location' src={'/location-sign.svg'}/>
-          <AutoComplete placeholder='Pickoff Location'/>
+          <AutoComplete type='source'/>
         </span>
         <span>
           <Image style={{position: 'absolute', zIndex: '1', margin: '7px 0px 0px 5px'}} width={22} height={22} alt='location' src={'/location-sign.svg'}/>
-          <AutoComplete placeholder='DropOff Location'/>
+          <AutoComplete type='destination'/>
         </span>
         <button onClick={handleSearch} className='btn btn-primary text-center'>Search</button>
     </form>

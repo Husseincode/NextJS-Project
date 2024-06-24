@@ -6,21 +6,28 @@ import { SourceContext } from '../../context/SourceContext';
 import { DestinationContext } from '../../context/DestinationContext';
 
 type AutoCompleteProps = {
-    placeholder: string,
+    type: string,
 }
 
 const AutoComplete = (props: AutoCompleteProps) => {
   const [value, setValue] = useState<any>('');
+  const [placeholder, setPlaceholder] = useState<any>(null);
   const {source, setSource} = useContext<any>(SourceContext);
   const {destination, setDestination} = useContext<any>(DestinationContext);
+
+  useEffect(()=>{
+    props.type ==='source'
+    ?setPlaceholder('Pickup Location')
+    :setPlaceholder('Dropoff Location');
+  },[props.type])
 
   const getLatandLng = (place:any, type:any) => {
     const placeId = place.value.place_id;
     const service = new google.maps.places.PlacesService(document.createElement('div'));
     service.getDetails({placeId}, (place, status) => {
       if (status === 'OK' && place?.geometry && place.geometry.location){
-        console.log(place.geometry.location.lat());
-        if (type === "source"){
+        console.log(place.geometry.location.lat(), type, place);
+        if (props.type === "source"){
           setSource({
             lat: place.geometry.location.lat(),
             lng: place.geometry.location.lng(),
@@ -40,12 +47,11 @@ const AutoComplete = (props: AutoCompleteProps) => {
     })
   };
 
-
   useEffect(()=>{
     if(source){
-      console.log(source)
+        console.log(source, destination)
     }
-  }, [source, destination])
+  },[source, destination])
   return (
     <>
         <span>
@@ -56,7 +62,7 @@ const AutoComplete = (props: AutoCompleteProps) => {
               getLatandLng(place, type);
               setValue(place)
             },
-            placeholder: props.placeholder,
+            placeholder: placeholder,
             isClearable: true,
             components: {
               DropdownIndicator: () => false

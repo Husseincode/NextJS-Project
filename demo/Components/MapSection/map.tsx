@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import './map-section.css';
 import React, { useContext, useEffect, useState } from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { SourceContext } from '../../context/SourceContext';
 import { DestinationContext } from '../../context/DestinationContext';
-import { Marker } from 'react-leaflet';
 
 const containerStyle = {
   // width: '400px',
@@ -35,22 +34,6 @@ const Map = () => {
   }, []);
 
   useEffect(()=>{
-    console.log(map);
-    if(!navigator.geolocation){
-      setError('Your browser does not support Geolocation');
-    }
-
-    const success = (position: GeolocationPosition) => {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      setCenter({ lat: latitude, lng: longitude});
-      console.log(latitude, longitude)
-    }
-
-    const error = () => {
-      setError('Unable to retrieve your location');
-    };
-    navigator.geolocation.getCurrentPosition(success, error);
     
     if(source?.length !== Array() && map){
       setCenter({
@@ -59,7 +42,7 @@ const Map = () => {
       })
       console.warn(center)
     }
-  },[source, destination, center])
+  },[source, destination])
 
   return (
       <GoogleMap
