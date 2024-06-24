@@ -2,13 +2,13 @@
 import { useState } from "react";
 import { DestinationContext } from "../../context/DestinationContext";
 import { SourceContext } from "../../context/SourceContext";
-import Header from "./components/Header/header";
-import Hero from "./components/Hero/hero";
-import Map from "./components/MapSection/map";
-import Search from "./components/SearchSection/search";
+import Header from "../../Components/Header/header";
+import Hero from "../../Components/Hero/hero";
+import Map from "../../Components/MapSection/map";
+import Search from "../../Components/SearchSection/search";
 import './pageStyle.css'
 import { LoadScript } from "@react-google-maps/api";
-import { Footer } from "./components/footer/footer";
+import { Footer } from "../../Components/footer/footer";
 
 export default function Homepage(){
     const [source, setSource] = useState<any>([]);

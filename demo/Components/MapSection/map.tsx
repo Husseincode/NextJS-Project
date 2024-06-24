@@ -2,8 +2,8 @@
 import './map-section.css';
 import React, { useContext, useEffect, useState } from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { SourceContext } from '../../../../context/SourceContext';
-import { DestinationContext } from '../../../../context/DestinationContext';
+import { SourceContext } from '../../context/SourceContext';
+import { DestinationContext } from '../../context/DestinationContext';
 import { Marker } from 'react-leaflet';
 
 const containerStyle = {

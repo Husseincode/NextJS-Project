@@ -4,8 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from 'next/image';
 import Cars from '../recommended/recommend';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
-import { SourceContext } from '../../../../context/SourceContext';
-import { DestinationContext } from '../../../../context/DestinationContext';
+import { SourceContext } from '../../context/SourceContext';
+import { DestinationContext } from '../../context/DestinationContext';
 
 let form_style = {
     width: '100%',
