@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import './map-section.css';
 import React, { useContext, useEffect, useState } from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { GoogleMap, MarkerF, OverlayView, DirectionsRenderer } from '@react-google-maps/api';
 import { SourceContext } from '../../context/SourceContext';
 import { DestinationContext } from '../../context/DestinationContext';
 
 const containerStyle = {
-  // width: '400px',
   height: '700px'
 };
 
@@ -18,11 +17,11 @@ const Map = () => {
   });
 
   const [map, setMap] = React.useState(null);
+  const [directionRoutesPoints, setDirectionRoutesPoints ] = useState<any>([]);
   const {source, setSource} = useContext<any>(SourceContext);
   const {destination, setDestination} = useContext<any>(DestinationContext);
 
   const onLoad = React.useCallback(function callback(map: any) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
 
@@ -34,7 +33,6 @@ const Map = () => {
   }, []);
 
   useEffect(()=>{
-    
     if(source?.length !== Array() && map){
       setCenter({
         lat: source.lat,
@@ -42,7 +40,36 @@ const Map = () => {
       })
       console.warn(center)
     }
-  },[source, destination])
+  },[source])
+
+  useEffect(()=>{
+    
+    if(destination?.length !== Array() && map){
+      setCenter({
+        lat: destination.lat,
+        lng: destination.lng
+      })
+    }
+    if(source.length !== Array() && destination.length !== Array()){
+      directionRoutes();
+    }
+  },[destination]);
+
+  const directionRoutes = () => {
+    const DirectionsService = new google.maps.DirectionsService();
+    DirectionsService.route({
+      origin: { lat: source.lat, lng: source.lng },
+      destination: {lat: destination.lat, lng: destination.lng},
+      travelMode: google.maps.TravelMode.DRIVING
+    }, (result, status)=> {
+      if(status === google.maps.DirectionsStatus.OK){
+        setDirectionRoutesPoints(result)
+      }
+      else{
+        console.error('Error finding routes!, check your internet connection')
+      }
+    })
+  }
 
   return (
       <GoogleMap
@@ -53,8 +80,33 @@ const Map = () => {
         onUnmount={onUnmount}
         options={{mapId: 'e7eb2ff1f40a437a'}}
       >
-       {source.length!=Array()? <Marker position={{lat:source.lat, lng:source.lng}}/>:null}
-        <></>
+       {source.length!=Array()? <MarkerF 
+       position={{lat:source.lat, lng:source.lng}}>
+        <OverlayView 
+        position={{ lat: source.lat, lng: source.lng }} 
+        mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
+          <div style={{minWidth: '80px'}} className='bg-white inline-block'>
+            <p className='text-black fw-bold p-1'>{source.label}</p>
+          </div>
+        </OverlayView>
+       </MarkerF>:null}
+
+       {destination.length!=Array()? <MarkerF 
+       position={{lat:destination.lat, lng:destination.lng}}>
+        <OverlayView 
+        position={{ lat: destination.lat, lng: destination.lng }} 
+        mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
+          <div style={{minWidth: '80px'}} className='bg-white inline-block'>
+            <p className='text-black fw-bold p-1'>{destination.label}</p>
+          </div>
+        </OverlayView>
+       </MarkerF>:null}
+        <DirectionsRenderer
+        directions={directionRoutesPoints}
+        options={{
+
+        }}
+        />
       </GoogleMap>
   )
 }
